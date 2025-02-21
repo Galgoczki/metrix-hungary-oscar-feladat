@@ -1,0 +1,38 @@
+version: '3.5'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: userPassword
+    ports:
+      - '27017:27017'
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data/db
+    networks:
+      - mongo-network
+        
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-docker
+    environment:
+      - PORT=3000
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongo
+    volumes:
+      - ./src:/app/src
+    networks:
+      - mongo-network
+      
+networks:
+  mongo-network:
+
+      
