@@ -36,7 +36,7 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # dotenv environment variable files
-#.env
+#.env #this is temporary, only due to the completeness of the assignment, if there is anyone who wants to take advantage of the fact that sensitive data is publicly available, it is unnecessary, all access will be deleted/already deleted (and that is exactly why passwords and things are like that)
 .env.development.local
 .env.test.local
 .env.production.local
